@@ -1,2 +1,2 @@
 # Polarimeter-Python
-Python Version of Polarimeter
+Consists of rotating quarter waveplate, fixed polarizer and detector. Python Version of Polarimeter
