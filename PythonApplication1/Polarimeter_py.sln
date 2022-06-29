@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32104.313
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Polarimeter_py", "PythonApplication1\Polarimeter_py.pyproj", "{87680FF9-8F01-4471-BC8D-A364AC91674D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87680FF9-8F01-4471-BC8D-A364AC91674D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87680FF9-8F01-4471-BC8D-A364AC91674D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FBCE45F-5C29-4BEB-9872-02E58C63A6C8}
+	EndGlobalSection
+EndGlobal
