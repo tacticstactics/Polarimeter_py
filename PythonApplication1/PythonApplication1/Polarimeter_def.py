@@ -4,7 +4,7 @@
 import numpy as np
 
 
-def proc1(param=0.01,m=256):
+def propagate(wavel=1.55e-6,no,octwp, Ein):
 
 
     tcol = np.zeros((m,1)); # time

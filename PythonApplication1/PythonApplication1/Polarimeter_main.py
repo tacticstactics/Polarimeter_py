@@ -6,10 +6,14 @@ import matplotlib.pyplot as plt
 
 import Polarimeter_def
 
-param = 0.01
-m = 128
+wavel = 1.55e-6
+no = 1
+opl = 1
 
-tcol, Etcol, Signalcol = Polarimeter_def.proc1(param,m)
+Ein = [[0.0], [0.0]]  # initialization of presets is done in __init__
+
+
+tcol, Etcol, Signalcol = Polarimeter_def.propagate(wavel=1.55e-6,no,opl, Ein)
 
 
 print('')
