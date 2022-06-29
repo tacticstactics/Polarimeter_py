@@ -61,3 +61,14 @@ def proc1(param=0.01,m=256):
     return tcol, Etcol,Signalcol
 
 
+
+def faradayrotaor(theta1, Ein):
+
+
+     T11 = [cos(theta1*pi/180), sin(theta1*pi/180);
+   	-sin(theta1*pi/180), cos(theta1*pi/180)];
+
+     Ea = T11 * Ein ;
+
+ return Ea
+
