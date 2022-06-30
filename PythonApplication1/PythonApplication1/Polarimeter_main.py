@@ -16,15 +16,29 @@ no = new_func()
 
 opl = 1
 
-Ein = [[1], [0]]  # initialization of presets is done in __init__
+Ein = 1
 
 print(Ein)
 
 
-Eout = Polarimeter_def.propagate(wavel,no,opl,Ein)
+#Eout = Polarimeter_def.propagate(wavel,no,opl,Ein)
 
 
 print('')
-print(Eout)
+#print(Eout)
 print('')
+
+n_a = np.array([[1, -1, 2],
+                [2, -2 ,1],
+                [3, 1 ,-1]])
+n_b = np.array([[2, 1, 3],
+                [1, 1, 2],
+                [-1, 2, 3]])
+dim= n_a.shape[0]
+n_mult=np.empty((dim,dim))
+for row in range(dim):
+    for col in range(dim):
+        n_mult[row,col ] = sum(n_a[row, :]*n_b[:, col])
+n_mult
+
 
