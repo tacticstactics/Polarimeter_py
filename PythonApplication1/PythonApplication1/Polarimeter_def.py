@@ -5,17 +5,13 @@ import math
 
 def propagate(wavel = 1.55e-6,no=1,opl=1,Ein=1):
 
-    #T11 = np.array([[np.exp(1j * wavel * no * opl), 0],[0, np.exp(1j * wavel * no * opl)]]);
-    T11 = np.array([[1, 0],
-                    [0, 1]])
+    T11 = np.array([[np.exp(1j * wavel * no * opl), 0],[0, np.exp(1j * wavel * no * opl)]]);
+    
+    #T11 = np.array([[1, 0],[0, 1]])
 
-    Eout = T11
-
-
-
-
-
-
+    Eout = np.dot(T11,Ein)
+    
+    
     return Eout
 
 

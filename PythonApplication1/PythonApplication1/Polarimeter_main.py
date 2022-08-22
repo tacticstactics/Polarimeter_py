@@ -26,12 +26,18 @@ print('Ein')
 print(Ein)
 
 
-#Eout = Polarimeter_def.propagate(wavel,no,opl,Ein)
+Eout = Polarimeter_def.propagate(wavel,no,opl,Ein)
+
+
 
 
 print('')
-#print(Eout)
+print('Eout')
+print(Eout)
+
 print('')
+print('')
+
 
 n_a = np.array([[1, -1, 2],
                 [2, -2 ,1],
