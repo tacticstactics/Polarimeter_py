@@ -1,5 +1,6 @@
 #Polarimeter_main.py
 
+print('Polarimeter_main.py')
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,29 +8,48 @@ import matplotlib.pyplot as plt
 import Polarimeter_def
 
 wavel = 1.55e-6
+no = 1
+ne=1.1
+#return no
 
-def new_func():
-    no = 1
-    return no
+#def new_func():
 
-no = new_func()
+#no = new_func()
 
-opl = 1
+opl = 10000
 
-Ein = np.array([[1],
-                [0]])
+Ein = np.array([[1],[0]])
 
 
-print('Polarimeter_main.py')
 print('')
 print('Ein')
 print(Ein)
 
-
-Eout = Polarimeter_def.propagate(wavel,no,opl,Ein)
-
+E1=Ein
 
 
+E2=Polarimeter_def.faradayrotaor(45,E1)
+
+print('')
+print('E2')
+print(E2)
+
+E3=Polarimeter_def.propagate(wavel,no,opl,E2)
+
+print('')
+print('E3')
+print(E3)
+
+
+E4=Polarimeter_def.propagate(wavel,no,opl,E3)
+
+print('')
+print('E4')
+print(E4)
+
+
+
+Eout = E4
 
 print('')
 print('Eout')
@@ -37,6 +57,8 @@ print(Eout)
 
 print('')
 print('')
+
+
 
 
 n_a = np.array([[1, -1, 2],
