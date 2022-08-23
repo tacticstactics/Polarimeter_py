@@ -10,7 +10,7 @@ import Polarimeter_def
 wavel = 1.55e-6
 no = 1
 ne=1.1
-#return no
+theta=45
 
 #def new_func():
 
