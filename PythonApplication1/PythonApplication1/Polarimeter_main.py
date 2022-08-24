@@ -10,13 +10,13 @@ import Polarimeter_def
 wavel = 1.55e-6
 no = 1
 ne=1.1
-theta=45
+theta1=22.5
 
 #def new_func():
 
 #no = new_func()
 
-opl = 10000
+opl = 9999
 
 Ein = np.array([[1],[0]])
 
@@ -28,7 +28,7 @@ print(Ein)
 E1=Ein
 
 
-E2=Polarimeter_def.faradayrotaor(45,E1)
+E2=Polarimeter_def.faradayrotaor(theta1,E1)
 
 print('')
 print('E2')
@@ -40,14 +40,14 @@ print('')
 print('E3')
 print(E3)
 
+opl2=8000
+theta2=45
 
-E4=Polarimeter_def.propagate(wavel,no,opl,E3)
+E4=Polarimeter_def.waveplate(wavel,no,ne,opl2,theta2,E3)
 
 print('')
 print('E4')
 print(E4)
-
-
 
 Eout = E4
 
