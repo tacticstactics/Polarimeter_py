@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 import Polarimeter_def
 
-wavel = 1.55e-6
+wavel = 1.55
 no = 1
 ne=1.1
 theta1=22.5
@@ -16,7 +16,7 @@ theta1=22.5
 
 #no = new_func()
 
-opl = 9999
+opl = 100
 
 Ein = np.array([[1],[0]])
 
@@ -58,27 +58,54 @@ print(Eout)
 print('')
 print('')
 
+m = 512
+
+PX_powercol = np.zeros((m,1));
+PY_powercol = np.zeros((m,1));
+
+for ii in range(m):
+
+    opl1 = ii*1
+
+    Eout_propagate=Polarimeter_def.propagate(wavel,no,opl1,Eout)
+
+    PX_powercol[(ii)] = Eout_propagate[0,0]
+    
+    print('')
+    print('Eout_propagate')
+    print(Eout_propagate)
+
+    PY_powercol[(ii)] = Eout_propagate[1,0]
 
 
+fig = plt.figure(figsize = (10,4), facecolor='lightblue')
+
+ax1 = fig.add_subplot(1, 2, 1)
+
+ax1.plot(np.real(PX_powercol),np.real(PY_powercol))
+
+ax2 = fig.add_subplot(1, 2, 2)
+
+plt.show()
 
 
-n_a = np.array([[1, -1, 2],
-                [2, -2 ,1],
-                [3, 1 ,-1]])
-n_b = np.array([[2, 1, 3],
-                [1, 1, 2],
-                [-1, 2, 3]])
+#n_a = np.array([[1, -1, 2],
+#                [2, -2 ,1],
+#                [3, 1 ,-1]])
+#n_b = np.array([[2, 1, 3],
+#                [1, 1, 2],
+#                [-1, 2, 3]])
 
-dim= n_a.shape[0]
-print('dim')
-print(dim)
+#dim= n_a.shape[0]
+#print('dim')
+#print(dim)
 
-n_mult=np.empty((dim,dim))
-for row in range(dim):
-    for col in range(dim):
-        n_mult[row,col ] = sum(n_a[row, :]*n_b[:, col])
-n_mult
+#n_mult=np.empty((dim,dim))
+#for row in range(dim):
+#    for col in range(dim):
+#        n_mult[row,col ] = sum(n_a[row, :]*n_b[:, col])
+#n_mult
 
-print('n_mult')
-print(Ein)
+#print('n_mult')
+#print(Ein)
 
