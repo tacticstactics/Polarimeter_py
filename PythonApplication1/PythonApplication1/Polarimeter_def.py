@@ -5,7 +5,7 @@ from ftplib import parse150
 import numpy as np
 import math
 
-def propagate(wavel=1.55e-6,no=1,opl=1,Ein=np.array([[1], [0]])):
+def propagate(wavel=1,no=1,opl=1,Ein=np.array([[1], [0]])):
 
     T11 = np.array([[np.exp(1j*wavel*no*opl),0],[0,np.exp(1j*wavel*no*opl)]]);
 
@@ -27,7 +27,7 @@ def faradayrotaor(theta1=45, Ein=np.array([[1],[0]])):
      return Eout
 
 
-def waveplate(wavel=1.55e-6,no=1,ne=1.1,opl=1,theta1=45,Ein=np.array([[1],[0]])):
+def waveplate(wavel=1,no=1,ne=1.1,opl=1,theta1=45,Ein=np.array([[1],[0]])):
 
   WP1 = np.array([[math.cos(theta1*math.pi/180),math.sin(theta1*math.pi/180)],[-1*math.sin(theta1*math.pi/180),math.cos(theta1*math.pi/180)]]);
 

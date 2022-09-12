@@ -7,86 +7,96 @@ import matplotlib.pyplot as plt
 
 import Polarimeter_def
 
-wavel = 1.55
+wavel = 1
 no = 1
-ne=1.1
-theta1=22.5
+ne = 1.1
 
-#def new_func():
-
-#no = new_func()
-
-opl = 100
 
 Ein = np.array([[1],[0]])
-
 
 print('')
 print('Ein')
 print(Ein)
 
-E1=Ein
+E1 = Ein
 
+theta1=0
 
 E2=Polarimeter_def.faradayrotaor(theta1,E1)
 
-print('')
-print('E2')
-print(E2)
+opl = 0
+E3 = Polarimeter_def.propagate(wavel,no,opl,E2)
 
-E3=Polarimeter_def.propagate(wavel,no,opl,E2)
+#Waveplate
+opl2 = wavel/(0.75*(ne-no))
+theta2 = 0
 
-print('')
-print('E3')
-print(E3)
+print('WP Thickness:')
+print(opl2)
 
-opl2=8000
-theta2=45
 
-E4=Polarimeter_def.waveplate(wavel,no,ne,opl2,theta2,E3)
-
-print('')
-print('E4')
-print(E4)
+E4 = Polarimeter_def.waveplate(wavel,no,ne,opl2,theta2,E3)
 
 Eout = E4
 
-print('')
-print('Eout')
-print(Eout)
-
-print('')
-print('')
-
-m = 512
+m = 256
 
 PX_powercol = np.zeros((m,1));
 PY_powercol = np.zeros((m,1));
 
+
 for ii in range(m):
 
-    opl1 = ii*1
+    opl1 = 0.05 * ii
 
     Eout_propagate=Polarimeter_def.propagate(wavel,no,opl1,Eout)
 
-    PX_powercol[(ii)] = Eout_propagate[0,0]
-    
-    print('')
-    print('Eout_propagate')
-    print(Eout_propagate)
-
+    PX_powercol[(ii)] = Eout_propagate[0,0]   
     PY_powercol[(ii)] = Eout_propagate[1,0]
 
 
+n = 256
+
+PX_qwpcol = np.zeros((n,1));
+PY_qwpcol = np.zeros((n,1));
+thetacol = np.zeros((n,1));
+
+# Assume QWP
+
+qwpt = wavel/(4*(ne-no))
+
+print('QWP Thickness:')
+print(qwpt)
+
+
+for jj in range(n):
+    
+    theta_var = 2 * jj
+
+    Eout_qwp = Polarimeter_def.waveplate(wavel,no,ne,qwpt,theta_var,Eout)
+    
+    thetacol[(jj)]=theta_var
+    PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2
+    PY_qwpcol[(jj)] = abs(Eout_qwp[1,0])**2
+
+
 fig = plt.figure(figsize = (10,4), facecolor='lightblue')
-
 ax1 = fig.add_subplot(1, 2, 1)
-
-ax1.plot(np.real(PX_powercol),np.real(PY_powercol))
-
 ax2 = fig.add_subplot(1, 2, 2)
+ax1.plot(np.real(PX_powercol),np.real(PY_powercol))
+ax1.set_xlim(-1,1)
+ax1.set_ylim(-1,1)
+ax2.plot(thetacol,PX_qwpcol, thetacol,PY_qwpcol)
+ax2.set_ylim(-0.1,1.1)
+
+# Assume this light hits rotating qwp and fixed polarizer.
 
 plt.show()
+
+
+
+
+
 
 
 #n_a = np.array([[1, -1, 2],
