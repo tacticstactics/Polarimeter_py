@@ -10,8 +10,8 @@ import Polarimeter_def
 
 
 
-#Ein = np.array([[1],[0]])
-Ein = np.array([[0],[1]])
+Ein = np.array([[1],[0]])
+#Ein = np.array([[0],[1]])
 
 print('')
 print('Ein')
@@ -19,7 +19,7 @@ print(Ein)
 
 E1 = Ein
 
-theta1 = 30
+theta1 = 0
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
@@ -34,7 +34,7 @@ print(E3)
 
 #Waveplate
 
-phase2 = 80 # degree. QWP
+phase2 = 90 # degree. QWP, 90
 theta2 = 45
 
 
@@ -68,7 +68,7 @@ for ii in range(m):
     Eouty_col[(ii)] = np.real(Eout_propagate[1,0])
 
 
-n = 256
+n = 1024
 thetacol = np.zeros((n,1));
 PX_qwpcol = np.zeros((n,1));
 
@@ -78,11 +78,9 @@ PX_qwpcol = np.zeros((n,1));
 phase_qwp = 90 # degree. QWP
 
 
-
-
 for jj in range(n):
     
-    theta_var = 2 * jj
+    theta_var = 1 * jj
 
     Eout_qwp = Polarimeter_def.waveplate(phase_qwp,theta_var,Eout)
     
@@ -90,22 +88,40 @@ for jj in range(n):
     PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2
 
 
+sr = 8*1024
 
-    N=256
+X1 = fft(PX_qwpcol)
+N = len(X1)
 
-X1 = fft(PX_qwpcol,N)
-Shifted_X1 = fftshift(X1)
+print('N = ')
+print(N)
+
+
+n1 = np.arange(N)
+T = N/sr
+freq = n1/T
+
+
 
 
 
 fig = plt.figure(figsize = (10,4), facecolor='lightblue')
-ax1 = fig.add_subplot(1, 2, 1)
-ax2 = fig.add_subplot(1, 2, 2)
+ax1 = fig.add_subplot(1, 3, 1)
+ax2 = fig.add_subplot(1, 3, 2)
+ax3 = fig.add_subplot(1, 3, 3)
+
 ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
+
 ax2.plot(thetacol,PX_qwpcol)
 ax2.set_ylim(-0.1,1.1)
+
+
+ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
+ax3.set_xlim(0,10)
+
+#ax3.plot(Shifted_f, np.abs(Shifted_X1)/o)#, use_line_collection=True)
 
 # Assume this light hits rotating qwp and fixed polarizer.
 
