@@ -7,11 +7,9 @@ import math
 
 def propagate(opl,Ein=np.array([[1],[0]])):
 
-    T11 = np.array([[np.exp(1j*opl),0],[0,np.exp(1j*opl)]]);
-
-    #T11 = np.array([[1, 0],[0, 1]])
-
-    Eout1 = np.dot(T11,Ein)
+    pp1 = np.array([[np.exp(1j*opl),0],[0,np.exp(1j*opl)]]);
+ 
+    Eout1 = np.dot(pp1,Ein)
 
     return Eout1
 
@@ -19,10 +17,9 @@ def propagate(opl,Ein=np.array([[1],[0]])):
 
 def faradayrotaor(theta1, Ein=np.array([[1],[0]])):
 
+     FR1 = np.array([[math.cos(theta1*math.pi/180),math.sin(theta1*math.pi/180)],[-1*math.sin(theta1*math.pi/180),math.cos(theta1*math.pi/180)]]);
 
-     FR11 = np.array([[math.cos(theta1*math.pi/180),math.sin(theta1*math.pi/180)],[-1*math.sin(theta1*math.pi/180),math.cos(theta1*math.pi/180)]]);
-
-     Eout2 = np.dot(FR11,Ein)
+     Eout2 = np.dot(FR1,Ein)
 
      return Eout2
 
@@ -30,7 +27,6 @@ def faradayrotaor(theta1, Ein=np.array([[1],[0]])):
 def waveplate(phase,theta1,Ein=np.array([[1],[0]])):
 
   WP1 = np.array([[math.cos(theta1*math.pi/180),math.sin(theta1*math.pi/180)],[-1*math.sin(theta1*math.pi/180),math.cos(theta1*math.pi/180)]]);
-
 
   WP2 = np.array([[np.exp(1j*0), 0],[0, np.exp(1j*phase*math.pi/180)]]);
 

@@ -4,6 +4,7 @@ print('Polarimeter_main.py')
 
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.fftpack import fft, fftshift
 
 import Polarimeter_def
 
@@ -53,8 +54,8 @@ print(Eout)
 
 m = 256
 
-PX_powercol = np.zeros((m,1));
-PY_powercol = np.zeros((m,1));
+Eoutx_col = np.zeros((m,1));
+Eouty_col = np.zeros((m,1));
 
 
 for ii in range(m):
@@ -63,15 +64,14 @@ for ii in range(m):
 
     Eout_propagate=Polarimeter_def.propagate(opl1,Eout)
 
-    PX_powercol[(ii)] = np.real(Eout_propagate[0,0])   
-    PY_powercol[(ii)] = np.real(Eout_propagate[1,0])
+    Eoutx_col[(ii)] = np.real(Eout_propagate[0,0])   
+    Eouty_col[(ii)] = np.real(Eout_propagate[1,0])
 
 
 n = 256
-
-PX_qwpcol = np.zeros((n,1));
-PY_qwpcol = np.zeros((n,1));
 thetacol = np.zeros((n,1));
+PX_qwpcol = np.zeros((n,1));
+
 
 # Assume QWP
 
@@ -88,16 +88,23 @@ for jj in range(n):
     
     thetacol[(jj)]=theta_var
     PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2
-    PY_qwpcol[(jj)] = abs(Eout_qwp[1,0])**2
+
+
+
+    N=256
+
+X1 = fft(PX_qwpcol,N)
+Shifted_X1 = fftshift(X1)
+
 
 
 fig = plt.figure(figsize = (10,4), facecolor='lightblue')
 ax1 = fig.add_subplot(1, 2, 1)
 ax2 = fig.add_subplot(1, 2, 2)
-ax1.plot(np.real(PX_powercol),np.real(PY_powercol))
+ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
-ax2.plot(thetacol,PX_qwpcol, thetacol,PY_qwpcol)
+ax2.plot(thetacol,PX_qwpcol)
 ax2.set_ylim(-0.1,1.1)
 
 # Assume this light hits rotating qwp and fixed polarizer.
