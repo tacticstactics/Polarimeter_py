@@ -7,9 +7,6 @@ import matplotlib.pyplot as plt
 
 import Polarimeter_def
 
-wavel = 1
-no = 1.5
-ne = 1.6
 
 
 #Ein = np.array([[1],[0]])
@@ -21,23 +18,31 @@ print(Ein)
 
 E1 = Ein
 
-theta1 = 0
+theta1 = 30
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
 opl1 = 0
-E3 = Polarimeter_def.propagate(wavel,no,opl1,E2)
+E3 = Polarimeter_def.propagate(opl1,E2)
+
+print('')
+print('E3')
+print(E3)
+
+
 
 #Waveplate
 
-opl2 = 0.5 * wavel/(ne-no)
+phase2 = 80 # degree. QWP
 theta2 = 45
 
-print('WP Thickness:')
-print(opl2)
+
+print('')
+print('E3')
+print(E3)
 
 
-E4 = Polarimeter_def.waveplate(wavel,no,ne,opl2,theta2,E3)
+E4 = Polarimeter_def.waveplate(phase2,theta2,E3)
 
 Eout = E4
 
@@ -56,7 +61,7 @@ for ii in range(m):
 
     opl1 = 0.05 * ii
 
-    Eout_propagate=Polarimeter_def.propagate(wavel,no,opl1,Eout)
+    Eout_propagate=Polarimeter_def.propagate(opl1,Eout)
 
     PX_powercol[(ii)] = np.real(Eout_propagate[0,0])   
     PY_powercol[(ii)] = np.real(Eout_propagate[1,0])
@@ -70,17 +75,16 @@ thetacol = np.zeros((n,1));
 
 # Assume QWP
 
-qwpt = 0.25 * wavel/(ne-no)
+phase_qwp = 90 # degree. QWP
 
-print('QWP Thickness:')
-print(qwpt)
+
 
 
 for jj in range(n):
     
     theta_var = 2 * jj
 
-    Eout_qwp = Polarimeter_def.waveplate(wavel,no,ne,qwpt,theta_var,Eout)
+    Eout_qwp = Polarimeter_def.waveplate(phase_qwp,theta_var,Eout)
     
     thetacol[(jj)]=theta_var
     PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2

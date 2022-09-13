@@ -5,9 +5,9 @@ from ftplib import parse150
 import numpy as np
 import math
 
-def propagate(wavel,no,opl,Ein=np.array([[1],[0]])):
+def propagate(opl,Ein=np.array([[1],[0]])):
 
-    T11 = np.array([[np.exp(1j*wavel*no*opl),0],[0,np.exp(1j*wavel*no*opl)]]);
+    T11 = np.array([[np.exp(1j*opl),0],[0,np.exp(1j*opl)]]);
 
     #T11 = np.array([[1, 0],[0, 1]])
 
@@ -27,11 +27,12 @@ def faradayrotaor(theta1, Ein=np.array([[1],[0]])):
      return Eout2
 
 
-def waveplate(wavel,no,ne,opl,theta1,Ein=np.array([[1],[0]])):
+def waveplate(phase,theta1,Ein=np.array([[1],[0]])):
 
   WP1 = np.array([[math.cos(theta1*math.pi/180),math.sin(theta1*math.pi/180)],[-1*math.sin(theta1*math.pi/180),math.cos(theta1*math.pi/180)]]);
 
-  WP2 = np.array([[np.exp(1j * wavel * no * opl), 0],[0, np.exp(1j * wavel * ne * opl)]]);
+
+  WP2 = np.array([[np.exp(1j*0), 0],[0, np.exp(1j*phase*math.pi/180)]]);
 
   WP3 = np.array([[math.cos(-1*theta1*math.pi/180),math.sin(-1*theta1*math.pi/180)],[-1*math.sin(-1*theta1*math.pi/180),math.cos(-1*theta1*math.pi/180)]]);
 
