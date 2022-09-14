@@ -16,6 +16,7 @@ Ein = np.array([[1],[0]])
 print('')
 print('Ein')
 print(Ein)
+print('')
 
 E1 = Ein
 
@@ -26,10 +27,10 @@ E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 opl1 = 0
 E3 = Polarimeter_def.propagate(opl1,E2)
 
-print('')
+
 print('E3')
 print(E3)
-
+print('')
 
 
 #Waveplate
@@ -38,10 +39,10 @@ phase2 = 0 # degree. QWP, 90
 theta2 = 45
 
 
-print('')
+
 print('E3')
 print(E3)
-
+print('')
 
 E4 = Polarimeter_def.waveplate(phase2,theta2,E3)
 
@@ -49,8 +50,7 @@ Eout = E4
 
 print('Eout = E4:')
 print(Eout)
-
-
+print('')
 
 m = 256
 
@@ -85,7 +85,7 @@ for jj in range(n):
     Eout_qwp = Polarimeter_def.waveplate(phase_qwp,theta_var,Eout)
     
     thetacol[(jj)]=theta_var
-    PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2
+    PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2 # Linear Polarization Component
 
 
 
@@ -94,17 +94,20 @@ print('Length of PX_qwpcol = ')
 print(len_PX_qwpcol)
 print('')
 
-X1 = fft(PX_qwpcol,n)
-N = len(X1)
+X1 = fft(PX_qwpcol)
+lenX1 = len(X1)
 
-print('Length of X1 = N = ')
-print(N)
+print('Length of X1 = ')
+print(lenX1)
 print('')
 
-df = 1/N
-
+df = 1/lenX1
 
 Shifted_X1 = fftshift(X1)
+print('X1 = ')
+print(X1)
+print('')
+
 
 len_Shifted_X1 = len(Shifted_X1)
 
@@ -113,7 +116,7 @@ print(len_Shifted_X1)
 print('')
 
 
-Shifted_sampleIndex = np.arange(-N//2, N//2)
+Shifted_sampleIndex = np.arange(-lenX1//2, lenX1//2)
 
 Shifted_f = Shifted_sampleIndex*df
 
@@ -123,6 +126,11 @@ print('Length of Shifted_f = ')
 print(len_Shifted_f)
 print('')
 
+arangen = np.arange(lenX1)
+
+print('arangen = ')
+print(arangen)
+print('')
 
 
 fig = plt.figure(figsize = (10,4), facecolor='lightblue')
@@ -138,7 +146,10 @@ ax2.plot(thetacol,PX_qwpcol, ".-")
 ax2.set_ylim(-0.1,1.1)
 
 
-ax3.stem(Shifted_f, np.abs(Shifted_X1)/N, use_line_collection=True)
+#ax3.stem(Shifted_f, np.abs(Shifted_X1)/N, use_line_collection=True)
+
+ax3.stem(arangen, np.abs(X1))
+
 #ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
 #ax3.set_xlim(0,1000)
 
