@@ -19,7 +19,7 @@ print(Ein)
 
 E1 = Ein
 
-theta1 = 0
+theta1 = 45
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
@@ -34,7 +34,7 @@ print(E3)
 
 #Waveplate
 
-phase2 = 90 # degree. QWP, 90
+phase2 = 0 # degree. QWP, 90
 theta2 = 45
 
 
@@ -88,20 +88,40 @@ for jj in range(n):
     PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2
 
 
-sr = 8*1024
 
-X1 = fft(PX_qwpcol)
+len_PX_qwpcol = len(PX_qwpcol)
+print('Length of PX_qwpcol = ')
+print(len_PX_qwpcol)
+print('')
+
+X1 = fft(PX_qwpcol,n)
 N = len(X1)
 
-print('N = ')
+print('Length of X1 = N = ')
 print(N)
+print('')
+
+df = 1/N
 
 
-n1 = np.arange(N)
-T = N/sr
-freq = n1/T
+Shifted_X1 = fftshift(X1)
+
+len_Shifted_X1 = len(Shifted_X1)
+
+print('Length of Shifted_X1 = ')
+print(len_Shifted_X1)
+print('')
 
 
+Shifted_sampleIndex = np.arange(-N//2, N//2)
+
+Shifted_f = Shifted_sampleIndex*df
+
+len_Shifted_f = len(Shifted_f)
+
+print('Length of Shifted_f = ')
+print(len_Shifted_f)
+print('')
 
 
 
@@ -114,12 +134,13 @@ ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
 
-ax2.plot(thetacol,PX_qwpcol)
+ax2.plot(thetacol,PX_qwpcol, ".-")
 ax2.set_ylim(-0.1,1.1)
 
 
-ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
-ax3.set_xlim(0,10)
+ax3.stem(Shifted_f, np.abs(Shifted_X1)/N, use_line_collection=True)
+#ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
+#ax3.set_xlim(0,1000)
 
 #ax3.plot(Shifted_f, np.abs(Shifted_X1)/o)#, use_line_collection=True)
 
