@@ -24,38 +24,28 @@ theta1 = 45
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
-opl1 = 0
-E3 = Polarimeter_def.propagate(opl1,E2)
-
-
-print('E3')
-print(E3)
-print('')
 
 
 #Waveplate
 
+theta2 = 0
+
 phase2 = 0 # degree. QWP, 90
-theta2 = 45
 
 
 
-print('E3')
-print(E3)
-print('')
+E3 = Polarimeter_def.waveplate(phase2,theta2,E2)
 
-E4 = Polarimeter_def.waveplate(phase2,theta2,E3)
+Eout = E3
 
-Eout = E4
-
-print('Eout = E4:')
+print('E3 = Eout =:')
 print(Eout)
 print('')
 
 m = 256
 
-Eoutx_col = np.zeros((m,1));
-Eouty_col = np.zeros((m,1));
+Eoutx_col = np.zeros(m);
+Eouty_col = np.zeros(m);
 
 
 for ii in range(m):
@@ -64,13 +54,13 @@ for ii in range(m):
 
     Eout_propagate=Polarimeter_def.propagate(opl1,Eout)
 
-    Eoutx_col[(ii)] = np.real(Eout_propagate[0,0])   
-    Eouty_col[(ii)] = np.real(Eout_propagate[1,0])
+    Eoutx_col[ii] = np.real(Eout_propagate[0,0])   
+    Eouty_col[ii] = np.real(Eout_propagate[1,0])
 
 
-n = 1024
-thetacol = np.zeros((n,1));
-PX_qwpcol = np.zeros((n,1));
+n = 2048
+thetacol = np.zeros(n);
+PX_qwpcol = np.zeros(n);
 
 
 # Assume QWP
@@ -80,12 +70,12 @@ phase_qwp = 90 # degree. QWP
 
 for jj in range(n):
     
-    theta_var = 1 * jj
+    theta_var = 0.5 * jj
 
     Eout_qwp = Polarimeter_def.waveplate(phase_qwp,theta_var,Eout)
     
-    thetacol[(jj)]=theta_var
-    PX_qwpcol[(jj)] = abs(Eout_qwp[0,0])**2 # Linear Polarization Component
+    thetacol[jj]=theta_var
+    PX_qwpcol[jj] = abs(Eout_qwp[0,0])**2 # Linear Polarization Component
 
 
 
@@ -142,7 +132,7 @@ ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
 
-ax2.plot(thetacol,PX_qwpcol, ".-")
+ax2.plot(thetacol,PX_qwpcol, "-")
 ax2.set_ylim(-0.1,1.1)
 
 
@@ -151,37 +141,11 @@ ax2.set_ylim(-0.1,1.1)
 ax3.stem(arangen, np.abs(X1))
 
 #ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
-#ax3.set_xlim(0,1000)
+ax3.set_xlim(0,32)
 
 #ax3.plot(Shifted_f, np.abs(Shifted_X1)/o)#, use_line_collection=True)
 
 # Assume this light hits rotating qwp and fixed polarizer.
 
 plt.show()
-
-
-
-
-
-
-
-#n_a = np.array([[1, -1, 2],
-#                [2, -2 ,1],
-#                [3, 1 ,-1]])
-#n_b = np.array([[2, 1, 3],
-#                [1, 1, 2],
-#                [-1, 2, 3]])
-
-#dim= n_a.shape[0]
-#print('dim')
-#print(dim)
-
-#n_mult=np.empty((dim,dim))
-#for row in range(dim):
-#    for col in range(dim):
-#        n_mult[row,col ] = sum(n_a[row, :]*n_b[:, col])
-#n_mult
-
-#print('n_mult')
-#print(Ein)
 
