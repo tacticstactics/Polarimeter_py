@@ -6,3 +6,6 @@ This polarimeter consisis of rotating quarter waveplate, polarizer and photo det
 
 ![Figure_2](https://user-images.githubusercontent.com/30459885/191178825-917e4321-0530-40d8-827d-6bb662431f26.png)
 
+1. Polarization State
+2. Time domain of photo detector signal
+3. Frequency domain of detector signal
