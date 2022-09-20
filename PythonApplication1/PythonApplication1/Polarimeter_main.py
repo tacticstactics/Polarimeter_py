@@ -1,11 +1,25 @@
-#Polarimeter_main.py
+﻿#Polarimeter_main.py
+
+def findpeaks(x, y, n, w):
+    index_all = list(signal.argrelmax(y, order=w))                  # scipyのピーク検出
+    index = []                                                      # ピーク指標の空リスト
+    peaks = []                                                      # ピーク値の空リスト
+ 
+    # n個分のピーク情報(指標、値）を格納
+    for i in range(n):
+        index.append(index_all[0][i])
+        peaks.append(y[index_all[0][i]])
+    index = np.array(index) * x[1]                                  # xの分解能x[1]をかけて指標を物理軸に変換
+    return index, peaks
 
 print('Polarimeter_main.py')
 
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.fftpack import fft, fftshift
 
+from scipy.fftpack import fft, fftshift
+from scipy import signal
+
+import matplotlib.pyplot as plt
 import Polarimeter_def
 
 
@@ -20,7 +34,7 @@ print('')
 
 E1 = Ein
 
-theta1 = 45
+theta1 = 22.5
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
@@ -28,9 +42,9 @@ E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
 #Waveplate
 
-theta2 = 0
+theta2 = 45
 
-phase2 = 0 # degree. QWP, 90
+phase2 = 22.5 # degree. QWP, 90
 
 
 
@@ -123,10 +137,11 @@ print(arangen)
 print('')
 
 
-fig = plt.figure(figsize = (10,4), facecolor='lightblue')
-ax1 = fig.add_subplot(1, 3, 1)
-ax2 = fig.add_subplot(1, 3, 2)
-ax3 = fig.add_subplot(1, 3, 3)
+fig = plt.figure(figsize = (12,4), facecolor='lightblue')
+ax1 = fig.add_subplot(1, 4, 1)
+ax2 = fig.add_subplot(1, 4, 2)
+ax3 = fig.add_subplot(1, 4, 3)
+ax4 = fig.add_subplot(1, 4, 4)
 
 ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
@@ -147,5 +162,13 @@ ax3.set_xlim(0,32)
 
 # Assume this light hits rotating qwp and fixed polarizer.
 
+index, peaks = findpeaks(arangen, X1, 4, 2)
+
+ax4.plot(arangen, np.abs(X1),label='sample', lw=1)
+ax4.scatter(index, peaks, label='peaks', color='red')
+ax4.legend()
+ax4.set_xlim(0,32)
+
 plt.show()
+
 
