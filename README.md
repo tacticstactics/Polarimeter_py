@@ -24,7 +24,7 @@ Figure 3. Linear Polarization of downward
 Figure 4. Right handed cicular polarization  
 
 ![Figure_5](https://user-images.githubusercontent.com/30459885/191660175-5cd95c25-ad08-4b02-892a-37d91747d789.png)
-Figure 5. Right handed cicular polarization  
+Figure 5. Left handed cicular polarization  
 
 
 Analysis:
