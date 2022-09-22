@@ -8,6 +8,10 @@ This polarimeter consisis of rotating quarter waveplate, polarizer and photo det
 
 ![Figure_3](https://user-images.githubusercontent.com/30459885/191658382-4db51861-d9d8-4b7c-8aea-66fe3e8eb32e.png)
 
+![Figure_4](https://user-images.githubusercontent.com/30459885/191660134-7e7cb4ee-3e56-4d9c-a8aa-2857fd4dbb79.png)
+
+
+
 1. Polarization State along XY plane
 2. Photo detector time domain signal
 3. fast Fourir Transform (fft) of photo detector time domain signal
