@@ -34,7 +34,7 @@ print('')
 
 E1 = Ein
 
-theta1 = 22.5
+theta1 = -22.5
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
@@ -44,7 +44,7 @@ E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
 theta2 = 45
 
-phase2 = 22.5 # degree. QWP, 90
+phase2 = 2 # degree. QWP, 90
 
 
 
