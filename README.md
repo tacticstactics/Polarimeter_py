@@ -8,12 +8,12 @@ This polarimeter consisis of rotating quarter waveplate, polarizer and photo det
 
 ![Figure_3](https://user-images.githubusercontent.com/30459885/191658382-4db51861-d9d8-4b7c-8aea-66fe3e8eb32e.png)
 
-1. Polarization State
-2. Time domain of photo detector signal
-3. Frequency domain of detector signal
-4. Peak Search of ft signal (Under development)
+1. Polarization State along XY plane
+2. Photo detector time domain signal
+3. fast Fourir Transform (fft) of photo detector time domain signal
+4. Peak Search of fft signal (Under development)
 
-Magnitude of two frequency signals (f1 and f2) determines ellipcity.
+The time domain sinal consists of two frequency: f1 and f2.
 
-Phase of f2 signal determines azimath of polarization state.
-
+Magnitude of two f1 and f2 determines ellipcity.
+Phase of f2 time domain signal determines azimath of polarization state.
