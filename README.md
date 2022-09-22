@@ -34,6 +34,7 @@ The time domain sinal consists of two frequency: f1 and f2.
 Magnitude of f1 and f2 determines ellipcity.
 
 Phase of f1 time domain signal determines semisphere: North or South.
+
 Phase of f2 time domain signal determines azimath of polarization state.
 
 
