@@ -1,8 +1,6 @@
 # Polarimeter_py
 
-Python Version of Polarimeter.
-
-Mueller matrix dual-rotating retarder polarimeter
+Python code of Mueller matrix dual-rotating retarder polarimeter
 https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
 
 This polarimeter consisis of rotating quarter waveplate, polarizer and photo detector.
