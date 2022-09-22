@@ -2,6 +2,9 @@
 
 Python Version of Polarimeter.
 
+Mueller matrix dual-rotating retarder polarimeter
+https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
+
 This polarimeter consisis of rotating quarter waveplate, polarizer and photo detector.
 
 1. Polarization State along XY plane
