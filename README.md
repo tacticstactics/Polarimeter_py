@@ -11,10 +11,13 @@ This polarimeter consisis of rotating quarter waveplate, polarizer and photo det
 
 
 ![Figure_1](https://user-images.githubusercontent.com/30459885/191657713-83d6a2b4-ddbe-4aea-b46a-6bc7c83ba059.png)
+Figure 1. Typical elliptical polarization
 
 ![Figure_2](https://user-images.githubusercontent.com/30459885/191658302-63b957cb-49f8-4d32-b8ab-c1e9f2151e10.png)
+Figure 2. Linear Polarization of upward
 
 ![Figure_3](https://user-images.githubusercontent.com/30459885/191658382-4db51861-d9d8-4b7c-8aea-66fe3e8eb32e.png)
+Figure 3. Linear Polarization of downward
 
 ![Figure_4](https://user-images.githubusercontent.com/30459885/191660134-7e7cb4ee-3e56-4d9c-a8aa-2857fd4dbb79.png)
 Figure 4. Right handed cicular polarization  
