@@ -26,6 +26,8 @@ Figure 4. Right handed cicular polarization
 Figure 5. Right handed cicular polarization  
 
 
+Analysis:
+
 The time domain sinal consists of two frequency: f1 and f2.
 
 Magnitude of two f1 and f2 determines ellipcity.
