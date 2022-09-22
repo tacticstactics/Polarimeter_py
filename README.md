@@ -24,7 +24,9 @@ Figure 5. Right handed cicular polarization
 
 
 The time domain sinal consists of two frequency: f1 and f2.
+
 Magnitude of two f1 and f2 determines ellipcity.
+
 Phase of f2 time domain signal determines azimath of polarization state.
 
 
