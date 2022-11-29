@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32104.313
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Polarimeter_py", "Polarimeter\Polarimeter_py.pyproj", "{87680FF9-8F01-4471-BC8D-A364AC91674D}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Wavaplate", "Wavaplate\Wavaplate.pyproj", "{D68EDBAF-6D15-43EE-989A-BB26D65854F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{87680FF9-8F01-4471-BC8D-A364AC91674D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{87680FF9-8F01-4471-BC8D-A364AC91674D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68EDBAF-6D15-43EE-989A-BB26D65854F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68EDBAF-6D15-43EE-989A-BB26D65854F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
