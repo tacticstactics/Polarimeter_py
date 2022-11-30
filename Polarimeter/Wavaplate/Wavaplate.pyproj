@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d68edbaf-6d15-43ee-989a-bb26d65854f0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Wavaplate.py</StartupFile>
+    <StartupFile>Wavaplate_main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Wavaplate.py" />
+    <Compile Include="Wavaplate_def.py" />
+    <Compile Include="Wavaplate_main.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
