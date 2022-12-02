@@ -30,18 +30,15 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45
-
 phase2 = 90 # unit: degree. phase 90 is equivalent to QWP
-
-
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 Eout = E2
 
-print('Eout = E2 =:')
-print(Eout)
-print('')
+#print('Eout = E2 =:')
+#print(Eout)
+#print('')
 
 m = 256
 
@@ -59,6 +56,27 @@ for ii in range(m):
 
     Eoutx_col[ii] = np.real(Eout_propagate[0,0])   
     Eouty_col[ii] = np.real(Eout_propagate[1,0])
+
+
+theta3 = 0
+phase3 = 90 # unit: degree. phase 90 is equivalent to QWP
+
+E3 = Polarimeter_def.waveplate(phase3,theta3,E2)
+
+E3x_col = np.zeros(m);
+E3y_col = np.zeros(m);
+opl3_col = np.zeros(m);
+
+for ii in range(m):
+
+    opl3 = 0.05 * (ii + m)
+
+    opl3_col[ii] = opl3   
+
+    Eout_propagate=Polarimeter_def.propagate(opl3,E3)
+
+    E3x_col[ii] = np.real(Eout_propagate[0,0])   
+    E3y_col[ii] = np.real(Eout_propagate[1,0])
 
 
 #n = 2048
@@ -85,10 +103,16 @@ for ii in range(m):
 
 
 fig = plt.figure(figsize = (12,4), facecolor='lightblue')
-ax1 = plt.axes(projection = '3d')
+#ax1 = plt.axes(projection = '3d')
+ax1 = fig.add_subplot(2,2,1,projection = '3d')
 
 ax1.plot3D(opl1_col,Eoutx_col, Eouty_col)
-ax1.set_title('3d Scatter plot geeks for geeks');
+ax1.set_title('3d plot');
+
+ax2 = fig.add_subplot(2,2,2,projection = '3d')
+ax2.plot3D(opl3_col,E3x_col, E3y_col)
+
+
 
 plt.show()
 
