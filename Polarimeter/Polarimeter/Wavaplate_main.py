@@ -14,9 +14,10 @@ import matplotlib.pyplot as plt
 
 import Polarimeter_def
 
-
+m = 256
 
 Ein = np.array([[1],[0]])
+
 #Ein = np.array([[0],[1]])
 
 print('')
@@ -26,24 +27,8 @@ print('')
 
 E1 = Ein
 
-
-#Waveplate
-
-theta2 = 45
-phase2 = 90 # unit: degree. phase 90 is equivalent to QWP
-
-E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
-
-Eout = E2
-
-#print('Eout = E2 =:')
-#print(Eout)
-#print('')
-
-m = 256
-
-Eoutx_col = np.zeros(m);
-Eouty_col = np.zeros(m);
+E1x_col = np.zeros(m);
+E1y_col = np.zeros(m);
 opl1_col = np.zeros(m);
 
 for ii in range(m):
@@ -52,16 +37,68 @@ for ii in range(m):
 
     opl1_col[ii] = opl1   
 
-    Eout_propagate=Polarimeter_def.propagate(opl1,Eout)
+    E1_propagate=Polarimeter_def.propagate(opl1,Ein)
 
-    Eoutx_col[ii] = np.real(Eout_propagate[0,0])   
-    Eouty_col[ii] = np.real(Eout_propagate[1,0])
+    E1x_col[ii] = np.real(E1_propagate[0,0])   
+    E1y_col[ii] = np.real(E1_propagate[1,0])
+
+
+
+#Waveplate
+
+theta2 = 45
+phase2 = 90 # unit: degree. phase 90 is equivalent to QWP
+
+E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
+
+#print('Eout = E2 =:')
+#print(Eout)
+#print('')
+
+E2x_col = np.zeros(m);
+E2y_col = np.zeros(m);
+opl2_col = np.zeros(m);
+
+for ii in range(m):
+    opl2 = 0.05 * ii
+    opl2_col[ii] = opl2   
+
+    E2_propagate=Polarimeter_def.propagate(opl2,E2)
+
+    E2x_col[ii] = np.real(E2_propagate[0,0])   
+    E2y_col[ii] = np.real(E2_propagate[1,0])
+
+
+E3x_col = np.zeros(m);
+E3y_col = np.zeros(m);
+opl3_col = np.zeros(m);
+
+
+E3 = -1 * E2
+
+for ii in range(m):
+
+    opl3 = 0.05 * ii
+
+    opl3_col[ii] = opl3
+
+    E3_propagate=Polarimeter_def.propagate(opl3,E3)
+
+    E3x_col[ii] = np.real(E3_propagate[0,0])   
+    E3y_col[ii] = np.real(E3_propagate[1,0])
+
+
+
+
 
 
 theta3 = 0
 phase3 = 90 # unit: degree. phase 90 is equivalent to QWP
 
-E3 = Polarimeter_def.waveplate(phase3,theta3,E2)
+
+
+
+E4 = Polarimeter_def.waveplate(phase3,theta3,E3)
 
 E3x_col = np.zeros(m);
 E3y_col = np.zeros(m);
@@ -69,7 +106,7 @@ opl3_col = np.zeros(m);
 
 for ii in range(m):
 
-    opl3 = 0.05 * (ii + m)
+    opl3 = 0.05 * ii
 
     opl3_col[ii] = opl3   
 
@@ -104,15 +141,20 @@ for ii in range(m):
 
 fig = plt.figure(figsize = (12,4), facecolor='lightblue')
 #ax1 = plt.axes(projection = '3d')
-ax1 = fig.add_subplot(2,2,1,projection = '3d')
+ax1 = fig.add_subplot(1,4,1,projection = '3d')
+#ax1.set_title('3d plot');
 
-ax1.plot3D(opl1_col,Eoutx_col, Eouty_col)
-ax1.set_title('3d plot');
-
-ax2 = fig.add_subplot(2,2,2,projection = '3d')
-ax2.plot3D(opl3_col,E3x_col, E3y_col)
+ax1.plot3D(opl1_col,E1x_col, E1y_col)
 
 
+ax2 = fig.add_subplot(1,4,2,projection = '3d')
+ax2.plot3D(opl2_col,E2x_col, E2y_col)
+
+ax3 = fig.add_subplot(1,4,3,projection = '3d')
+ax3.plot3D(opl3_col,E3x_col, E3y_col)
+
+ax4 = fig.add_subplot(1,4,4,projection = '3d')
+ax4.plot3D(opl3_col,E3x_col, E3y_col)
 
 plt.show()
 
