@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Polarimeter",
+    "\\Polarimeter\\Polarimeter"
   ],
-  "SelectedNode": "\\C:\\Users\\swako\\source\\repos\\tacticstactics\\Polarimeter_py",
+  "SelectedNode": "\\Polarimeter\\Polarimeter_py.sln",
   "PreviewInSolutionExplorer": false
 }
