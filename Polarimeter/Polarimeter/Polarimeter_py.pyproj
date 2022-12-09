@@ -24,7 +24,8 @@
   <ItemGroup>
     <Compile Include="Polarimeter_def.py" />
     <Compile Include="Polarimeter_main.py" />
-    <Compile Include="Wavaplate_main.py" />
+    <Compile Include="faradayrotator_doublepass_main.py" />
+    <Compile Include="wavaplate_doublepass_main.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

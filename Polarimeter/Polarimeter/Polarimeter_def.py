@@ -40,4 +40,13 @@ def waveplate(phase,theta1,Ein=np.array([[1],[0]])):
 
   return Eout3
 
+def reflect(Ein=np.array([[1],[0]])):
+
+    R1 = np.array([[-1,0],[0,1]]);
+
+    Eout4 = np.dot(R1, Ein)
+    
+    return Eout4
+
+
 

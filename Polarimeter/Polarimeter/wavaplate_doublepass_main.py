@@ -1,8 +1,8 @@
 
-#Waveplate_main.py
+#waveplate_doublepass_main.py
 
 
-print('Waveplate_main.py')
+print('waveplate_doublepass_main.py')
 
 import numpy as np
 
@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 import Polarimeter_def
 
-m = 256
+m = 512
 
 Ein = np.array([[1],[0]])
 
@@ -26,15 +26,13 @@ print(Ein)
 print('')
 
 E1 = Ein
-
+opl1_col = np.zeros(m);
 E1x_col = np.zeros(m);
 E1y_col = np.zeros(m);
-opl1_col = np.zeros(m);
 
 for ii in range(m):
 
     opl1 = 0.05 * ii
-
     opl1_col[ii] = opl1   
 
     E1_propagate=Polarimeter_def.propagate(opl1,Ein)
@@ -46,8 +44,8 @@ for ii in range(m):
 
 #Waveplate
 
-theta2 = 45
-phase2 = 90 # unit: degree. phase 90 is equivalent to QWP
+theta2 = 45 # Angle in XY plane
+phase2 = 90 # Retardation unit in degree. 90 degree correspond to QWP / 180 degree correspods to HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
@@ -55,9 +53,9 @@ E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 #print(Eout)
 #print('')
 
+opl2_col = np.zeros(m);
 E2x_col = np.zeros(m);
 E2y_col = np.zeros(m);
-opl2_col = np.zeros(m);
 
 for ii in range(m):
     opl2 = 0.05 * ii
@@ -69,12 +67,15 @@ for ii in range(m):
     E2y_col[ii] = np.real(E2_propagate[1,0])
 
 
+
+# Reflection and propagate
+
+opl3_col = np.zeros(m);
 E3x_col = np.zeros(m);
 E3y_col = np.zeros(m);
-opl3_col = np.zeros(m);
 
 
-E3 = -1 * E2
+E3 = Polarimeter_def.reflect(E2)
 
 for ii in range(m):
 
@@ -89,31 +90,31 @@ for ii in range(m):
 
 
 
+# Doube pass
 
 
-
-theta3 = 0
-phase3 = 90 # unit: degree. phase 90 is equivalent to QWP
+theta3 = -1 * theta2
+phase3 = phase2 # unit: degree. phase 90 is equivalent to QWP
 
 
 
 
 E4 = Polarimeter_def.waveplate(phase3,theta3,E3)
 
-E3x_col = np.zeros(m);
-E3y_col = np.zeros(m);
-opl3_col = np.zeros(m);
+E4x_col = np.zeros(m);
+E4y_col = np.zeros(m);
+opl4_col = np.zeros(m);
 
 for ii in range(m):
 
-    opl3 = 0.05 * ii
+    opl4 = 0.05 * ii
 
-    opl3_col[ii] = opl3   
+    opl4_col[ii] = opl4
 
-    Eout_propagate=Polarimeter_def.propagate(opl3,E3)
+    E4_propagate=Polarimeter_def.propagate(opl4,E4)
 
-    E3x_col[ii] = np.real(Eout_propagate[0,0])   
-    E3y_col[ii] = np.real(Eout_propagate[1,0])
+    E4x_col[ii] = np.real(E4_propagate[0,0])   
+    E4y_col[ii] = np.real(E4_propagate[1,0])
 
 
 #n = 2048
@@ -142,19 +143,28 @@ for ii in range(m):
 fig = plt.figure(figsize = (12,4), facecolor='lightblue')
 #ax1 = plt.axes(projection = '3d')
 ax1 = fig.add_subplot(1,4,1,projection = '3d')
+ax1.plot3D(opl1_col,E1x_col, E1y_col)
+ax1.set_zlim(-1,1)
+ax1.set_ylim(-1,1)
 #ax1.set_title('3d plot');
 
-ax1.plot3D(opl1_col,E1x_col, E1y_col)
+
 
 
 ax2 = fig.add_subplot(1,4,2,projection = '3d')
 ax2.plot3D(opl2_col,E2x_col, E2y_col)
+ax2.set_zlim(-1,1)
+ax2.set_ylim(-1,1)
 
 ax3 = fig.add_subplot(1,4,3,projection = '3d')
 ax3.plot3D(opl3_col,E3x_col, E3y_col)
+ax3.set_zlim(-1,1)
+ax3.set_ylim(-1,1)
 
 ax4 = fig.add_subplot(1,4,4,projection = '3d')
-ax4.plot3D(opl3_col,E3x_col, E3y_col)
+ax4.plot3D(opl4_col,E4x_col, E4y_col)
+ax4.set_zlim(-1,1)
+ax4.set_ylim(-1,1)
 
 plt.show()
 
