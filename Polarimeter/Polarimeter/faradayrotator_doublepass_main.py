@@ -16,9 +16,9 @@ import Polarimeter_def
 
 m = 512
 
-Ein = np.array([[1],[0]])
+Ein = np.array([[1],[0]]) # X-plane
 
-#Ein = np.array([[0],[1]])
+#Ein = np.array([[0],[1]]) # Y-Plane
 
 print('')
 print('Ein')
@@ -26,6 +26,7 @@ print(Ein)
 print('')
 
 E1 = Ein
+
 opl1_col = np.zeros(m);
 E1x_col = np.zeros(m);
 E1y_col = np.zeros(m);
