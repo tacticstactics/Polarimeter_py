@@ -16,7 +16,7 @@ print('Polarimeter_main.py')
 
 import numpy as np
 
-from scipy.fftpack import fft, fftshift
+from scipy.fft import fft, fftshift
 from scipy import signal
 
 import matplotlib.pyplot as plt
