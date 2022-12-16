@@ -115,28 +115,6 @@ for ii in range(m):
     E4y_col[ii] = np.real(E4_propagate[1,0])
 
 
-#n = 2048
-#thetacol = np.zeros(n);
-#PX_qwpcol = np.zeros(n);
-
-
-# Assume QWP
-
-#phase_qwp = 90 # degree. QWP
-
-
-#for jj in range(n):
-    
- #   theta_var = 0.5 * jj
-
-  #  Eout_qwp = Polarimeter_def.waveplate(phase_qwp,theta_var,Eout)
-    
-   # thetacol[jj]=theta_var
-   # PX_qwpcol[jj] = abs(Eout_qwp[0,0])**2 # Linear Polarization Component
-
-
-
-
 
 fig = plt.figure(figsize = (12,4), facecolor='lightblue')
 #ax1 = plt.axes(projection = '3d')

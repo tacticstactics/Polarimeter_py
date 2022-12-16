@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Polarimeter",
-    "\\Polarimeter\\Polarimeter"
+    "\\Polarimeter"
   ],
-  "SelectedNode": "\\Polarimeter\\Polarimeter_py.sln",
+  "SelectedNode": "\\Polarimeter\\Polarimeter",
   "PreviewInSolutionExplorer": false
 }
