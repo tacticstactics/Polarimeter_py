@@ -1,4 +1,5 @@
-﻿#Polarimeter_main.py
+﻿#Polarimeter_main_v2.py
+#v2
 
 def findpeaks(x, y, n, w):
     index_all = list(signal.argrelmax(y, order=w))                  # scipyのピーク検出
@@ -12,11 +13,11 @@ def findpeaks(x, y, n, w):
     index = np.array(index) * x[1]                                  # xの分解能x[1]をかけて指標を物理軸に変換
     return index, peaks
 
-print('Polarimeter_main.py')
+print('Polarimeter_main_v2.py')
 
 import numpy as np
 
-from scipy.fftpack import fft, fftshift
+from scipy.fft import fft, fftshift
 from scipy import signal
 
 import matplotlib.pyplot as plt
@@ -34,7 +35,9 @@ print('')
 
 E1 = Ein
 
-theta1 = 105
+#Faraday Rotation
+
+theta1 = 1 
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
@@ -42,9 +45,9 @@ E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
 #Waveplate
 
-theta2 = 2
+theta2 = 45
 
-phase2 = 2 # degree. QWP, 90
+phase2 = 90 # degree. QWP, 90
 
 
 
@@ -66,30 +69,30 @@ for ii in range(m):
 
     opl1 = 0.05 * ii
 
-    Eout_propagate=Polarimeter_def.propagate(opl1,Eout)
+    Eout_propagate = Polarimeter_def.propagate(opl1,Eout)
 
     Eoutx_col[ii] = np.real(Eout_propagate[0,0])   
     Eouty_col[ii] = np.real(Eout_propagate[1,0])
 
 
 #n = 2048
-n = 4096
+n = 4096*2
 thetacol = np.zeros(n);
 PX_qwpcol = np.zeros(n);
 
 
-# Assume QWP
+# Simulate rotating QWP
 
 phase_qwp = 90 # degree. 90: QWP
 
 
 for jj in range(n):
     
-    theta_var = 0.2 * jj
+    theta_var = 0.25 * jj
 
-    Eout_qwp = Polarimeter_def.waveplate(phase_qwp,theta_var,Eout)
+    Eout_qwp = Polarimeter_def.waveplate(phase_qwp, theta_var, Eout)
     
-    thetacol[jj]=theta_var
+    thetacol[jj] = theta_var
     PX_qwpcol[jj] = (np.abs(Eout_qwp[0,0]))**2 # Linear Polarization Component
 
 

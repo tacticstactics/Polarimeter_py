@@ -23,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Polarimeter_def.py" />
+    <Compile Include="Polarimeter_main_v2.py" />
     <Compile Include="Polarimeter_main.py" />
     <Compile Include="faradayrotator_doublepass_main.py" />
     <Compile Include="wavaplate_doublepass_main.py" />
