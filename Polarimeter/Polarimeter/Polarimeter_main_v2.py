@@ -37,7 +37,7 @@ E1 = Ein
 
 #Faraday Rotation
 
-theta1 = 1 
+theta1 = 0.1 
 
 E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
@@ -45,10 +45,8 @@ E2 = Polarimeter_def.faradayrotaor(theta1,E1)
 
 #Waveplate
 
-theta2 = 45
-
-phase2 = 90 # degree. QWP, 90
-
+theta2 = 44.9
+phase2 = 90.1 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 
 E3 = Polarimeter_def.waveplate(phase2,theta2,E2)
@@ -57,6 +55,31 @@ Eout = E3
 
 print('E3 = Eout =:')
 print(Eout)
+print('')
+
+
+xabsEout = np.abs(Eout[0,0])
+xphaseEout = np.angle(Eout[0,0], deg=True)
+
+print('Absolute of x of Eout:')
+print(xabsEout)
+print('')
+
+
+print('Phase of x of Eout:')
+print(xphaseEout)
+print('')
+
+
+yabsEout = np.abs(Eout[1,0])
+print('Absolute of y of Eout:')
+print(yabsEout)
+print('')
+
+
+yphaseEout = np.angle(Eout[1,0], deg=True)
+print('Phase of y of Eout:')
+print(yphaseEout)
 print('')
 
 m = 256
