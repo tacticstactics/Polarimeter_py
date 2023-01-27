@@ -177,7 +177,11 @@ print(arangen)
 print('')
 
 C0 = Sphere_def.Sphere0()
+C45 = Sphere_def.Sphere45()
 C90 = Sphere_def.Sphere90()
+C135 = Sphere_def.Sphere135()
+H0 = Sphere_def.SphereH0()
+
 
 fig = plt.figure(figsize = (12,4), facecolor='lightblue')
 ax1 = fig.add_subplot(1, 4, 1)
@@ -212,11 +216,53 @@ ax4.legend()
 ax4.set_xlim(0,32)
 
 
+phi22 = 45
+theta22 = theta1
+
+xyz_init = np.zeros((3, 1))
+
+
+xyz_init[1,:] = 1.1
+
+print("xyz_init =")
+print(xyz_init)
+
+# rotate_Phi
+
+x1 = xyz_init[0,:]
+y1 = xyz_init[1,:]
+z1 = xyz_init[2,:]
+
+x2 = x1
+y2 = np.cos(phi22*np.pi/180)*y1 - np.sin(phi22*np.pi/180)*z1
+z2 = np.sin(phi22*np.pi/180)*y1 + np.cos(phi22*np.pi/180)*z1
+
+#rotate_tho
+
+x3 = np.cos(theta22*np.pi/180)*x2 - np.sin(theta22*np.pi/180)*y2
+y3 = np.sin(theta22*np.pi/180)*x2 + np.cos(theta22*np.pi/180)*y2
+z3 = z2
+
+xyz_end = np.zeros((3, 1))
+
+xyz_end[0,:] = x3
+xyz_end[1,:] = y3
+xyz_end[2,:] = z3
+
+print("xyz_end =")
+print(xyz_end)
+
+
 fig2 = plt.figure()
 ax21 = fig2.add_subplot(projection='3d')
 
-ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue')
-ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue')
+ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue', linewidths = 1, s=10)
+ax21.scatter(C45[0,:], C45[1,:], C45[2,:], color='blue', linewidths = 1, s=10)
+ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue', linewidths = 1, s=10)
+ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='blue', linewidths = 1, s=10)
+ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='red', linewidths = 1, s=10)
+ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
+ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='green', s=10)
 
 plt.show()
 
