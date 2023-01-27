@@ -3,8 +3,9 @@
 Python code of Mueller matrix dual-rotating retarder polarimeter
 https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
 
-This polarimeter consisis of rotating quarter waveplate, polarizer and photo detector.
+This polarimeter consisits of 1)rotating quarter waveplate, 2)fixed polarizer and 3) photo detector.
 
+From Left:
 1. Polarization State along XY plane
 2. Photo detector time domain signal
 3. fast Fourir Transform (fft) of photo detector time domain signal
@@ -36,5 +37,3 @@ Magnitude of f1 and f2 determines ellipcity.
 Phase of f1 time domain signal determines semisphere: North or South.
 
 Phase of f2 time domain signal determines azimath of polarization state.
-
-
