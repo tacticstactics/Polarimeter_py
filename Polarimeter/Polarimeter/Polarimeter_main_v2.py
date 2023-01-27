@@ -36,21 +36,19 @@ print('')
 
 E1 = Ein
 
-#Faraday Rotation
-
-theta1 = 1
-
-E2 = Polarimeter_def.faradayrotaor(theta1,E1)
-
-
-
 #Waveplate
 
-theta2 = 2
-phase2 = 2 # Phase retardance in degree. 90 for QWP. 180 for HWP
+theta2 = 45 # constant
+phase2 = 45 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
+E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
-E3 = Polarimeter_def.waveplate(phase2,theta2,E2)
+#Faraday Rotation
+
+theta1 = 45
+
+E3 = Polarimeter_def.faradayrotaor(theta1,E2)
+
 
 Eout = E3
 
@@ -216,11 +214,11 @@ ax4.legend()
 ax4.set_xlim(0,32)
 
 
-phi22 = 45
+
 theta22 = theta1
+phi22 = phase2
 
 xyz_init = np.zeros((3, 1))
-
 
 xyz_init[1,:] = 1.1
 
@@ -256,14 +254,17 @@ print(xyz_end)
 fig2 = plt.figure()
 ax21 = fig2.add_subplot(projection='3d')
 
-ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue', linewidths = 1, s=10)
-ax21.scatter(C45[0,:], C45[1,:], C45[2,:], color='blue', linewidths = 1, s=10)
-ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue', linewidths = 1, s=10)
-ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='blue', linewidths = 1, s=10)
-ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='red', linewidths = 1, s=10)
+ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue', linewidths = 1, s=1)
+ax21.scatter(C45[0,:], C45[1,:], C45[2,:], color='blue', linewidths = 1, s=1)
+ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue', linewidths = 1, s=1)
+ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='blue', linewidths = 1, s=1)
+ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='red', linewidths = 1, s=1)
+
 ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
 ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='green', s=10)
 
+ax21.set_xlabel('X axis')
+ax21.set_ylabel('Y axis')
+ax21.set_zlabel('Z axis')
+
 plt.show()
-
-

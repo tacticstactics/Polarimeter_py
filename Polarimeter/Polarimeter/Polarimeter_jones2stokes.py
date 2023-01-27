@@ -19,23 +19,24 @@ print('')
 
 E1 = Ein
 
+#
+theta22 = 15 # Faraday Rotation in degree
+phi22 = 45 # Phase retardance in degree. 90 for QWP. 180 for HWP
+#
 
-theta22 = -45 # Faraday Rotation in degree
-phi22 = 0 # Phase retardance in degree. 90 for QWP. 180 for HWP
+#Waveplate: Phase
 
+theta2 = 45
+phase2 = phi22 
+
+E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation 
 
 theta1 = theta22
 
-E2 = Polarimeter_def.faradayrotaor(theta1,E1)
+E3 = Polarimeter_def.faradayrotaor(theta1,E2)
 
-#Waveplate
-
-theta2 = theta1 + 45
-phase2 = phi22 
-
-E3 = Polarimeter_def.waveplate(phase2,theta2,E2)
 
 Eout = E3
 
@@ -106,13 +107,7 @@ ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
 
-
-
-
-
-
 xyz_init = np.zeros((3, 1))
-
 
 xyz_init[1,:] = 1.05
 
@@ -129,7 +124,7 @@ x2 = x1
 y2 = np.cos(phi22*np.pi/180)*y1 - np.sin(phi22*np.pi/180)*z1
 z2 = np.sin(phi22*np.pi/180)*y1 + np.cos(phi22*np.pi/180)*z1
 
-#rotate_tho
+#rotate_theta
 
 x3 = np.cos(theta22*np.pi/180)*x2 - np.sin(theta22*np.pi/180)*y2
 y3 = np.sin(theta22*np.pi/180)*x2 + np.cos(theta22*np.pi/180)*y2
