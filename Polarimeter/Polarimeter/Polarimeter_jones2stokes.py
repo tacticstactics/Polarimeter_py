@@ -3,7 +3,6 @@
 print('Polarimeter_jones2stokes.py')
 
 import numpy as np
-
 import matplotlib.pyplot as plt
 import Polarimeter_def
 import Sphere_def
