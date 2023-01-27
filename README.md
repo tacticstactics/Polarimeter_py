@@ -8,7 +8,7 @@ This polarimeter consisits of 1)rotating quarter waveplate, 2)fixed polarizer an
 From Left:
 1. Polarization State along XY plane
 2. Photo detector time domain signal
-3. fast Fourir Transform (fft) of photo detector time domain signal
+3. Fast Fourir Transform (fft) of photo detector time domain signal
 4. Peak Search of fft signal (Under development)
 
 
