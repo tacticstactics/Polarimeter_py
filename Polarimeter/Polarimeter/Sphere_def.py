@@ -150,7 +150,6 @@ def SphereH0():
             y1 = np.sin(phi1 * np.pi/180)
             z1 = 0
 
-
             H0[0,jj] = x1
             H0[1,jj] = y1
             H0[2,jj] = z1
