@@ -22,6 +22,7 @@ from scipy import signal
 
 import matplotlib.pyplot as plt
 import Polarimeter_def
+import Sphere_def
 
 
 
@@ -175,6 +176,8 @@ print('arangen = ')
 print(arangen)
 print('')
 
+C0 = Sphere_def.Sphere0()
+C90 = Sphere_def.Sphere90()
 
 fig = plt.figure(figsize = (12,4), facecolor='lightblue')
 ax1 = fig.add_subplot(1, 4, 1)
@@ -207,6 +210,13 @@ ax4.plot(arangen, np.abs(X1),label='sample', lw=1)
 ax4.scatter(index, peaks, label='peaks', color='red')
 ax4.legend()
 ax4.set_xlim(0,32)
+
+
+fig2 = plt.figure()
+ax21 = fig2.add_subplot(projection='3d')
+
+ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue')
+ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue')
 
 plt.show()
 
