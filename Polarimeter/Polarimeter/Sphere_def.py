@@ -154,5 +154,3 @@ def SphereH0():
             H0[1,jj] = y1
             H0[2,jj] = z1
     return H0
-
-

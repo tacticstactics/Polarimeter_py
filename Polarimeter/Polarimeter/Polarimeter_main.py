@@ -1,5 +1,4 @@
-﻿#Polarimeter_main_v2.py
-#v2
+﻿#Polarimeter_main.py
 
 def findpeaks(x, y, n, w):
     index_all = list(signal.argrelmax(y, order=w))                  # scipyのピーク検出
@@ -13,7 +12,7 @@ def findpeaks(x, y, n, w):
     index = np.array(index) * x[1]                                  # xの分解能x[1]をかけて指標を物理軸に変換
     return index, peaks
 
-print('Polarimeter_main_v2.py')
+print('Polarimeter_main.py')
 
 import numpy as np
 
@@ -21,25 +20,20 @@ from scipy.fft import fft, fftshift
 from scipy import signal
 
 import matplotlib.pyplot as plt
+
 import Polarimeter_def
 import Sphere_def
 
 
-
 Ein = np.array([[1],[0]])
 #Ein = np.array([[0],[1]])
-
-print('')
-print('Ein')
-print(Ein)
-print('')
 
 E1 = Ein
 
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 2 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = 15 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
@@ -48,7 +42,6 @@ E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 theta1 = 45
 
 E3 = Polarimeter_def.faradayrotaor(theta1,E2)
-
 
 Eout = E3
 
@@ -73,7 +66,6 @@ print('')
 print('Phase of x of Eout:')
 print(xphaseEout)
 print('')
-
 
 yabsEout = np.abs(Eout[1,0])
 yrealEout = np.real(Eout[1,0])
