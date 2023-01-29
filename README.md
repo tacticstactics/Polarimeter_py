@@ -5,7 +5,12 @@ https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
 
 This polarimeter consisits of 1) rotating quarter waveplate, 2) fixed polarizer and 3) photo detector.
 
-From Left:
+Photo detector signal is fourier transformed. Frequency conponents are analyzed.
+Also phase of each frequencies are used to determine azimath abd phase of polarized light.
+
+Below are calculation results.
+
+From Left to Right:
 1. Polarization State along XY plane
 2. Photo detector time domain signal
 3. Fast Fourir Transform (fft) of photo detector time domain signal
