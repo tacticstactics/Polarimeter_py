@@ -12,7 +12,7 @@ Also phase of each frequencies are used to determine azimath abd phase of polari
 Below are calculation results.
 
 From Left to Right:
-1. Polarization State along XY plane
+1. Polarization State in XY plane
 2. Photo detector time domain signal
 3. Fast Fourir Transform (fft) of photo detector time domain signal
 4. Peak Search of fft signal (Under development)
