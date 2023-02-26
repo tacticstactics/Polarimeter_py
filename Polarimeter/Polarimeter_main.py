@@ -33,13 +33,13 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 88 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = 45 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation
 
-theta1 = 5
+theta1 = 45
 
 E3 = Polarimeter_def.faradayrotaor(theta1,E2)
 
@@ -253,7 +253,7 @@ ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='blue', linewidths = 1, s=1)
 ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='red', linewidths = 1, s=1)
 
 ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
-ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='green', s=10)
+ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='red', s=10)
 
 ax21.set_xlabel('X axis')
 ax21.set_ylabel('Y axis')
