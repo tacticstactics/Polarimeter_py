@@ -4,7 +4,11 @@ Python code of Mueller matrix dual-rotating retarder polarimeter
 
 https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
 
-This polarimeter consisits of 1) rotating quarter waveplate, 2) fixed polarizer and 3) photo detector.
+This polarimeter consisits of three elements:
+
+1) rotating quarter waveplate
+2) fixed polarizer
+3) photo detector.
 
 Photo detector signal is fourier transformed. Frequency conponents are analyzed.
 Also phase of each frequencies are used to determine azimath abd phase of polarized light.
