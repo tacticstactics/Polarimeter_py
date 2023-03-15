@@ -246,11 +246,13 @@ print(xyz_end)
 fig2 = plt.figure()
 ax21 = fig2.add_subplot(projection='3d')
 
-ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(C45[0,:], C45[1,:], C45[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='red', linewidths = 1, s=1)
+
+ax21.plot(C0[0,:], C0[1,:], C0[2,:], color='gray')
+ax21.plot(C45[0,:], C45[1,:], C45[2,:], color='gray')
+ax21.plot(C90[0,:], C90[1,:], C90[2,:], color='gray')
+ax21.plot(C135[0,:], C135[1,:], C135[2,:], color='gray')
+
+ax21.plot(H0[0,:], H0[1,:], H0[2,:], color='gray')
 
 ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
 ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='red', s=10)
