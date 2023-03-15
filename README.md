@@ -43,3 +43,8 @@ Magnitude of f1 and f2 determines ellipcity.
 Phase of f1 time domain signal determines semisphere: North or South.
 
 Phase of f2 time domain signal determines azimath of polarization state.
+
+![Figure_2](https://user-images.githubusercontent.com/30459885/225231663-54c264f6-09fc-497e-a0ba-1fb88e7feb9e.png)
+Poincaré sphere
+
+
