@@ -106,6 +106,7 @@ ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
 
+
 xyz_init = np.zeros((3, 1))
 
 xyz_init[1,:] = 1.05
@@ -153,4 +154,5 @@ ax21.set_xlabel('X axis')
 ax21.set_ylabel('Y axis')
 ax21.set_zlabel('Z axis')
 
+plt.grid(True)
 plt.show()
