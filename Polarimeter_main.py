@@ -1,15 +1,14 @@
 ﻿#Polarimeter_main.py
 
 def findpeaks(x, y, n, w):
-    index_all = list(signal.argrelmax(y, order=w))                  # scipyのピーク検出
-    index = []                                                      # ピーク指標の空リスト
-    peaks = []                                                      # ピーク値の空リスト
+    index_all = list(signal.argrelmax(y, order=w))                  
+    index = []                                                      
+    peaks = []                                                      
  
-    # n個分のピーク情報(指標、値）を格納
     for i in range(n):
         index.append(index_all[0][i])
         peaks.append(y[index_all[0][i]])
-    index = np.array(index) * x[1]                                  # xの分解能x[1]をかけて指標を物理軸に変換
+    index = np.array(index) * x[1]                                 
     return index, peaks
 
 print('Polarimeter_main.py')
