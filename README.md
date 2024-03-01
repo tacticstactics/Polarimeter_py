@@ -7,7 +7,7 @@ https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
 This polarimeter consisits of three elements:
 
 1) rotating quarter waveplate
-2) fixed polarizer
+2) polarizer
 3) photo detector.
 
 Photo detector signal is fourier transformed. After transformation, azimath and phase of polarized light are calculated using amplitude and phase of frequency signals.
