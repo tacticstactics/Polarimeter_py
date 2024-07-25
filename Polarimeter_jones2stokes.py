@@ -8,15 +8,18 @@ import Polarimeter_def
 import Sphere_def
 
 
-#Ein = np.array([[1],[0]]) # Parallel
+Ein = np.array([[1],[0]]) # 0  Parallel
 
-#Ein = np.array([[1/np.sqrt(2)],[1/np.sqrt(2)]]) # Parallel
+#Ein = np.array([[1/np.sqrt(2)],[1/np.sqrt(2)]]) # 1.
 
-#Ein = np.array([[0],[1]]) # vertical
+#Ein = np.array([[0],[1]]) # 2
 
-Ein = np.array([[1/np.sqrt(2)],[-1/np.sqrt(2)]]) # Parallel
+#Ein = np.array([[1/np.sqrt(2)],[-1/np.sqrt(2)]]) # 3
 
 #Ein = np.array([[-1],[0]]) # Parallel
+
+#Ein = np.array([[-1/np.sqrt(2)],[-1/np.sqrt(2)]]) # 4
+
 #Ein = np.array([[0],[-1]]) # Parallel
 
 #Ein = np.array([[-1/np.sqrt(2)],[-1/np.sqrt(2)]]) # Parallel
@@ -29,22 +32,20 @@ print('')
 E1 = Ein
 
 #
-theta22 = 15 # Faraday Rotation in degree
-phi22 = 45 # Phase retardance in degree. 90 for QWP. 180 for HWP
 #
 
 #Waveplate: Phase
 
-theta2 = 45
-phase2 = phi22 
+theta2 = 45 # fixed.Do not change
+phase2 = 90 #90 for QWP, 180 for HWP 
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation 
 
-theta1 = theta22
+theta_fr = 45
 
-E3 = Polarimeter_def.faradayrotaor(theta1,E2)
+E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
 
 
 Eout = E3
@@ -91,6 +92,10 @@ m = 128
 Eoutx_col = np.zeros(m);
 Eouty_col = np.zeros(m);
 
+value_in_XYplane = phase2
+value_in_YZplane = theta_fr
+
+
 for ii in range(m):
 
     opl1 = 0.05 * ii
@@ -124,20 +129,21 @@ xyz_init[1,:] = 1.05
 print("xyz_init =")
 print(xyz_init)
 
-# rotate_Phi
+
 
 x1 = xyz_init[0,:]
 y1 = xyz_init[1,:]
 z1 = xyz_init[2,:]
 
+# YZ Plane
 x2 = x1
-y2 = np.cos(phi22*np.pi/180)*y1 - np.sin(phi22*np.pi/180)*z1
-z2 = np.sin(phi22*np.pi/180)*y1 + np.cos(phi22*np.pi/180)*z1
+y2 = np.cos(1 * value_in_YZplane*np.pi/180)*y1 - np.sin(1 * value_in_YZplane*np.pi/180)*z1
+z2 = np.sin(1 * value_in_YZplane*np.pi/180)*y1 + np.cos(1 * value_in_YZplane*np.pi/180)*z1
 
-#rotate_theta
+# XY Plane
 
-x3 = np.cos(theta22*np.pi/180)*x2 - np.sin(theta22*np.pi/180)*y2
-y3 = np.sin(theta22*np.pi/180)*x2 + np.cos(theta22*np.pi/180)*y2
+x3 = np.cos(value_in_XYplane*np.pi/180)*x2 - np.sin(value_in_XYplane*np.pi/180)*y2
+y3 = np.sin(value_in_XYplane*np.pi/180)*x2 + np.cos(value_in_XYplane*np.pi/180)*y2
 z3 = z2
 
 xyz_end = np.zeros((3, 1))
