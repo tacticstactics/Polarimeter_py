@@ -8,8 +8,18 @@ import Polarimeter_def
 import Sphere_def
 
 
-Ein = np.array([[1],[0]]) # Parallel
+#Ein = np.array([[1],[0]]) # Parallel
+
+#Ein = np.array([[1/np.sqrt(2)],[1/np.sqrt(2)]]) # Parallel
+
 #Ein = np.array([[0],[1]]) # vertical
+
+Ein = np.array([[1/np.sqrt(2)],[-1/np.sqrt(2)]]) # Parallel
+
+#Ein = np.array([[-1],[0]]) # Parallel
+#Ein = np.array([[0],[-1]]) # Parallel
+
+#Ein = np.array([[-1/np.sqrt(2)],[-1/np.sqrt(2)]]) # Parallel
 
 print('')
 print('Ein')
@@ -83,7 +93,7 @@ Eouty_col = np.zeros(m);
 
 for ii in range(m):
 
-    opl1 = 0.04 * ii
+    opl1 = 0.05 * ii
 
     Eout_propagate = Polarimeter_def.propagate(opl1,Eout)
 
