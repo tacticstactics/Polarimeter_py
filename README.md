@@ -52,3 +52,13 @@ Phase of f2 time domain signal determines azimath of polarization state.
 Poincaré sphere
 
 
+
+https://github.com/user-attachments/assets/05ea3ac3-038a-4de2-8c50-272cf9ab6d13
+
+
+
+https://github.com/user-attachments/assets/6afebe14-cc73-4d69-8384-24126d1ffbeb
+
+
+
+
