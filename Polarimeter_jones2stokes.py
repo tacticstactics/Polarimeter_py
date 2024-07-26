@@ -10,19 +10,6 @@ import Sphere_def
 
 Ein = np.array([[1],[0]]) # 0  Parallel
 
-#Ein = np.array([[1/np.sqrt(2)],[1/np.sqrt(2)]]) # 1.
-
-#Ein = np.array([[0],[1]]) # 2
-
-#Ein = np.array([[1/np.sqrt(2)],[-1/np.sqrt(2)]]) # 3
-
-#Ein = np.array([[-1],[0]]) # Parallel
-
-#Ein = np.array([[-1/np.sqrt(2)],[-1/np.sqrt(2)]]) # 4
-
-#Ein = np.array([[0],[-1]]) # Parallel
-
-#Ein = np.array([[-1/np.sqrt(2)],[-1/np.sqrt(2)]]) # Parallel
 
 print('')
 print('Ein')
@@ -31,19 +18,19 @@ print('')
 
 E1 = Ein
 
-#
+# two steps. First step is waveplate. Then faraday rotator.
 #
 
 #Waveplate: Phase
 
 theta2 = 45 # fixed.Do not change
-phase2 = 90 #90 for QWP, 180 for HWP 
+phase2 = 10 #90 for QWP, 180 for HWP 
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation 
 
-theta_fr = 45
+theta_fr = 40
 
 E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
 
@@ -89,11 +76,11 @@ print('')
 
 m = 128
 
-Eoutx_col = np.zeros(m);
-Eouty_col = np.zeros(m);
+Eoutx_col = np.zeros(m)
+Eouty_col = np.zeros(m)
 
-value_in_XYplane = phase2
-value_in_YZplane = theta_fr
+value_in_YZplane = phase2
+value_in_XYplane = theta_fr
 
 
 for ii in range(m):
@@ -137,8 +124,8 @@ z1 = xyz_init[2,:]
 
 # YZ Plane
 x2 = x1
-y2 = np.cos(1 * value_in_YZplane*np.pi/180)*y1 - np.sin(1 * value_in_YZplane*np.pi/180)*z1
-z2 = np.sin(1 * value_in_YZplane*np.pi/180)*y1 + np.cos(1 * value_in_YZplane*np.pi/180)*z1
+y2 = np.cos(value_in_YZplane*np.pi/180)*y1 - np.sin(value_in_YZplane*np.pi/180)*z1
+z2 = np.sin(value_in_YZplane*np.pi/180)*y1 + np.cos(value_in_YZplane*np.pi/180)*z1
 
 # XY Plane
 
@@ -158,13 +145,14 @@ print(xyz_end)
 
 ax21 = fig.add_subplot(1, 2, 2, projection='3d')
 
-ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(C45[0,:], C45[1,:], C45[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='blue', linewidths = 1, s=1)
-ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='red', linewidths = 1, s=1)
+ax21.scatter(C0[0,:], C0[1,:], C0[2,:], color='gray', linewidths = 1, s=1)
+ax21.scatter(C45[0,:], C45[1,:], C45[2,:], color='gray', linewidths = 1, s=1)
+ax21.scatter(C90[0,:], C90[1,:], C90[2,:], color='gray', linewidths = 1, s=1)
+ax21.scatter(C135[0,:], C135[1,:], C135[2,:], color='gray', linewidths = 1, s=1)
+ax21.scatter(H0[0,:], H0[1,:], H0[2,:], color='gray', linewidths = 1, s=1)
 
-ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='green', s=10)
+ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
+ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='red', s=10)
 
 ax21.set_xlabel('X axis')
 ax21.set_ylabel('Y axis')

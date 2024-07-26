@@ -32,15 +32,15 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 45 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = 20 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation
 
-theta1 = 45
+theta_fr = 70
 
-E3 = Polarimeter_def.faradayrotaor(theta1,E2)
+E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
 
 Eout = E3
 
@@ -102,8 +102,8 @@ for ii in range(m):
 
 #n = 2048
 n = 4096*2
-thetacol = np.zeros(n);
-PX_qwpcol = np.zeros(n);
+thetacol = np.zeros(n)
+PX_qwpcol = np.zeros(n)
 
 
 # Simulate rotating QWP
@@ -172,11 +172,11 @@ C135 = Sphere_def.Sphere135()
 H0 = Sphere_def.SphereH0()
 
 
-fig = plt.figure(figsize = (12,4), facecolor='lightblue')
-ax1 = fig.add_subplot(1, 4, 1)
-ax2 = fig.add_subplot(1, 4, 2)
-ax3 = fig.add_subplot(1, 4, 3)
-ax4 = fig.add_subplot(1, 4, 4)
+fig = plt.figure(figsize = (15,4), facecolor='lightblue')
+ax1 = fig.add_subplot(1, 5, 2)
+ax2 = fig.add_subplot(1, 5, 3)
+ax3 = fig.add_subplot(1, 5, 4)
+ax4 = fig.add_subplot(1, 5, 5)
 
 ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
@@ -206,8 +206,9 @@ ax4.set_xlim(0,32)
 
 
 
-theta22 = theta1
-phi22 = phase2
+
+value_in_YZplane = phase2 # YZ Plane
+value_in_XYplane = theta_fr # XY Plane
 
 xyz_init = np.zeros((3, 1))
 
@@ -223,13 +224,13 @@ y1 = xyz_init[1,:]
 z1 = xyz_init[2,:]
 
 x2 = x1
-y2 = np.cos(phi22*np.pi/180)*y1 - np.sin(phi22*np.pi/180)*z1
-z2 = np.sin(phi22*np.pi/180)*y1 + np.cos(phi22*np.pi/180)*z1
+y2 = np.cos(value_in_YZplane*np.pi/180)*y1 - np.sin(value_in_YZplane*np.pi/180)*z1
+z2 = np.sin(value_in_YZplane*np.pi/180)*y1 + np.cos(value_in_YZplane*np.pi/180)*z1
 
 #rotate_tho
 
-x3 = np.cos(theta22*np.pi/180)*x2 - np.sin(theta22*np.pi/180)*y2
-y3 = np.sin(theta22*np.pi/180)*x2 + np.cos(theta22*np.pi/180)*y2
+x3 = np.cos(value_in_XYplane*np.pi/180)*x2 - np.sin(value_in_XYplane*np.pi/180)*y2
+y3 = np.sin(value_in_XYplane*np.pi/180)*x2 + np.cos(value_in_XYplane*np.pi/180)*y2
 z3 = z2
 
 xyz_end = np.zeros((3, 1))
@@ -242,8 +243,7 @@ print("xyz_end =")
 print(xyz_end)
 
 
-fig2 = plt.figure()
-ax21 = fig2.add_subplot(projection='3d')
+ax21 = fig.add_subplot(1, 5, 1,projection='3d')
 
 
 ax21.plot(C0[0,:], C0[1,:], C0[2,:], color='gray')
