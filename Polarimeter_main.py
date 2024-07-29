@@ -32,13 +32,13 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 88 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = 2 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation
 
-theta_fr = 2
+theta_fr = 362
 
 E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
 
@@ -86,8 +86,8 @@ print('')
 
 m = 256
 
-Eoutx_col = np.zeros(m);
-Eouty_col = np.zeros(m);
+Eoutx_col = np.zeros(m)
+Eouty_col = np.zeros(m)
 
 
 for ii in range(m):
@@ -172,37 +172,6 @@ C135 = Sphere_def.Sphere135()
 H0 = Sphere_def.SphereH0()
 
 
-fig = plt.figure(figsize = (15,4), facecolor='lightblue')
-ax1 = fig.add_subplot(1, 5, 2)
-ax2 = fig.add_subplot(1, 5, 3)
-ax3 = fig.add_subplot(1, 5, 4)
-ax4 = fig.add_subplot(1, 5, 5)
-
-ax1.plot(Eoutx_col, Eouty_col)
-ax1.set_xlim(-1,1)
-ax1.set_ylim(-1,1)
-
-ax2.plot(thetacol,PX_qwpcol, "-")
-ax2.set_ylim(-0.1,1.1)
-
-
-#ax3.stem(Shifted_f, np.abs(Shifted_X1)/N, use_line_collection=True)
-
-ax3.stem(arangen, np.abs(X1))
-
-#ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
-ax3.set_xlim(0,32)
-
-#ax3.plot(Shifted_f, np.abs(Shifted_X1)/o)#, use_line_collection=True)
-
-# Assume this light hits rotating qwp and fixed polarizer.
-
-index, peaks = findpeaks(arangen, X1, 4, 2)
-
-ax4.plot(arangen, np.abs(X1),label='sample', lw=1)
-ax4.scatter(index, peaks, label='peaks', color='red')
-ax4.legend()
-ax4.set_xlim(0,32)
 
 
 
@@ -243,7 +212,42 @@ print("xyz_end =")
 print(xyz_end)
 
 
+fig = plt.figure(figsize = (15,4), tight_layout=True, facecolor='lightblue')
+
 ax21 = fig.add_subplot(1, 5, 1,projection='3d')
+ax1 = fig.add_subplot(1, 5, 2)
+ax2 = fig.add_subplot(1, 5, 3)
+ax3 = fig.add_subplot(1, 5, 4)
+ax4 = fig.add_subplot(1, 5, 5)
+
+ax1.plot(Eoutx_col, Eouty_col)
+ax1.set_xlim(-1,1)
+ax1.set_ylim(-1,1)
+
+ax2.plot(thetacol,PX_qwpcol, "-")
+ax2.set_ylim(-0.1,1.1)
+
+
+#ax3.stem(Shifted_f, np.abs(Shifted_X1)/N, use_line_collection=True)
+
+ax3.stem(arangen, np.abs(X1))
+
+#ax3.stem(freq, np.abs(X1), 'b', markerfmt=" ", basefmt="-b")
+ax3.set_xlim(0,32)
+
+#ax3.plot(Shifted_f, np.abs(Shifted_X1)/o)#, use_line_collection=True)
+
+# Assume this light hits rotating qwp and fixed polarizer.
+
+index, peaks = findpeaks(arangen, X1, 4, 2)
+
+ax4.plot(arangen, np.abs(X1),label='sample', lw=1)
+ax4.scatter(index, peaks, label='peaks', color='red')
+ax4.legend()
+ax4.set_xlim(0,32)
+
+
+
 
 
 ax21.plot(C0[0,:], C0[1,:], C0[2,:], color='gray')
@@ -259,5 +263,7 @@ ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='red', s=10)
 ax21.set_xlabel('X axis')
 ax21.set_ylabel('Y axis')
 ax21.set_zlabel('Z axis')
+
+plt.savefig(f"{phase2}_{theta_fr}.png", dpi=300)
 
 plt.show()
