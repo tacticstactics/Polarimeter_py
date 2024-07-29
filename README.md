@@ -1,6 +1,8 @@
 # Polarimeter_py
 
-https://github.com/user-attachments/assets/05ea3ac3-038a-4de2-8c50-272cf9ab6d13
+
+https://github.com/user-attachments/assets/4ffc6628-28ac-45f0-9c63-f8f451fef694
+
 
 Python code of Mueller matrix dual-rotating retarder polarimeter
 
