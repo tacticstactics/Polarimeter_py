@@ -24,7 +24,7 @@ E1 = Ein
 #Waveplate: Phase
 
 theta2 = 45 # fixed.Do not change
-phase2 = 10 #90 for QWP, 180 for HWP 
+phase2 = 89 #90 for QWP, 180 for HWP 
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
