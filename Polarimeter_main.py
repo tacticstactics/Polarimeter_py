@@ -220,6 +220,21 @@ ax2 = fig.add_subplot(1, 5, 3)
 ax3 = fig.add_subplot(1, 5, 4)
 ax4 = fig.add_subplot(1, 5, 5)
 
+
+ax21.plot(C0[0,:], C0[1,:], C0[2,:], color='gray')
+ax21.plot(C45[0,:], C45[1,:], C45[2,:], color='gray')
+ax21.plot(C90[0,:], C90[1,:], C90[2,:], color='gray')
+ax21.plot(C135[0,:], C135[1,:], C135[2,:], color='gray')
+
+ax21.plot(H0[0,:], H0[1,:], H0[2,:], color='gray')
+
+ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
+ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='red', s=10)
+
+ax21.set_xlabel('X axis')
+ax21.set_ylabel('Y axis')
+ax21.set_zlabel('Z axis')
+
 ax1.plot(Eoutx_col, Eouty_col)
 ax1.set_xlim(-1,1)
 ax1.set_ylim(-1,1)
@@ -245,24 +260,6 @@ ax4.plot(arangen, np.abs(X1),label='sample', lw=1)
 ax4.scatter(index, peaks, label='peaks', color='red')
 ax4.legend()
 ax4.set_xlim(0,32)
-
-
-
-
-
-ax21.plot(C0[0,:], C0[1,:], C0[2,:], color='gray')
-ax21.plot(C45[0,:], C45[1,:], C45[2,:], color='gray')
-ax21.plot(C90[0,:], C90[1,:], C90[2,:], color='gray')
-ax21.plot(C135[0,:], C135[1,:], C135[2,:], color='gray')
-
-ax21.plot(H0[0,:], H0[1,:], H0[2,:], color='gray')
-
-ax21.scatter(xyz_init[0,:], xyz_init[1,:], xyz_init[2,:], color='green', s=10)
-ax21.scatter(xyz_end[0,:], xyz_end[1,:], xyz_end[2,:], color='red', s=10)
-
-ax21.set_xlabel('X axis')
-ax21.set_ylabel('Y axis')
-ax21.set_zlabel('Z axis')
 
 plt.savefig(f"{phase2}_{theta_fr}.png", dpi=300)
 
