@@ -1,4 +1,10 @@
-﻿#Polarimeter_main.py
+﻿import numpy as np
+from scipy.fft import fft, fftshift
+from scipy import signal
+import matplotlib.pyplot as plt
+import Polarimeter_def
+import Sphere_def
+
 
 def findpeaks(x, y, n, w):
     index_all = list(signal.argrelmax(y, order=w))                  
@@ -11,21 +17,12 @@ def findpeaks(x, y, n, w):
     index = np.array(index) * x[1]                                 
     return index, peaks
 
-print('Polarimeter_main.py')
-
-import numpy as np
-
-from scipy.fft import fft, fftshift
-from scipy import signal
-
-import matplotlib.pyplot as plt
-
-import Polarimeter_def
-import Sphere_def
 
 
-Ein = np.array([[1],[0]])
-#Ein = np.array([[0],[1]])
+if __name__ == "__main__":
+    
+    Ein = np.array([[1],[0]])
+    #Ein = np.array([[0],[1]])
 
 E1 = Ein
 
