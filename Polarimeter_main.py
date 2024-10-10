@@ -29,7 +29,7 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 2 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = 42 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 

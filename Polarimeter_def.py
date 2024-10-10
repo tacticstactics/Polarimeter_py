@@ -1,5 +1,3 @@
-#Polarimeter_def.py
-
 #from errno import EINPROGRESS
 from ftplib import parse150
 import numpy as np
@@ -47,6 +45,3 @@ def reflect(Ein=np.array([[1],[0]])):
     Eout4 = np.dot(R1, Ein)
     
     return Eout4
-
-
-

@@ -1,14 +1,10 @@
-﻿#Polarimeter_jones2stokes.py
-
-print('Polarimeter_jones2stokes.py')
-
-import numpy as np
+﻿import numpy as np
 import matplotlib.pyplot as plt
 import Polarimeter_def
 import Sphere_def
 
-
-Ein = np.array([[1],[0]]) # 0  Parallel
+if __name__ == "__main__":
+    Ein = np.array([[1],[0]]) # 0  Parallel
 
 
 print('')
