@@ -8,11 +8,11 @@ https://github.com/user-attachments/assets/5efcc322-bb95-4312-b1cb-1116c103c990
 
 
 
-Python code of Mueller matrix dual-rotating retarder polarimeter
+Python code of Mueller matrix dual-rotating retarder polarimeter. You can find principle here:
 
 https://opg.optica.org/ao/abstract.cfm?uri=ao-31-31-6676
 
-This polarimeter consisits of three elements:
+The polarimeter consisits of three elements:
 
 1) rotating quarter waveplate
 2) polarizer
