@@ -14,24 +14,27 @@ print('')
 
 E1 = Ein
 
-# two steps. First step is waveplate. Then faraday rotator.
-#
+# Three: steps. Propagte, waveplate and Faraday rotator.
+
+# Just Propagate
+
+E2 = Polarimeter_def.propagate(1, E1)
 
 #Waveplate: Phase
 
 theta2 = 45 # fixed.Do not change
 phase2 = 89 #90 for QWP, 180 for HWP 
 
-E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
+E3 = Polarimeter_def.waveplate(phase2,theta2,E2)
 
 #Faraday Rotation 
 
 theta_fr = 40
 
-E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
+E4 = Polarimeter_def.faradayrotaor(theta_fr,E3)
 
 
-Eout = E3
+Eout = E4
 
 print('E3 = Eout =:')
 print(Eout)
