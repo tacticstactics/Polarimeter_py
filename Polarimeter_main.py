@@ -30,13 +30,13 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 135 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = -89 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation
 
-theta_fr = 100
+theta_fr = 0.1
 
 E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
 
