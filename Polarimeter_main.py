@@ -1,4 +1,5 @@
-﻿import numpy as np
+﻿import os
+import numpy as np
 from scipy.fft import fft, fftshift
 from scipy import signal
 import matplotlib.pyplot as plt
@@ -29,13 +30,13 @@ E1 = Ein
 #Waveplate
 
 theta2 = 45 # constant
-phase2 = 42 # Phase retardance in degree. 90 for QWP. 180 for HWP
+phase2 = 135 # Phase retardance in degree. 90 for QWP. 180 for HWP
 
 E2 = Polarimeter_def.waveplate(phase2,theta2,E1)
 
 #Faraday Rotation
 
-theta_fr = 362
+theta_fr = 100
 
 E3 = Polarimeter_def.faradayrotaor(theta_fr,E2)
 
@@ -85,6 +86,9 @@ m = 256
 
 Eoutx_col = np.zeros(m)
 Eouty_col = np.zeros(m)
+
+dirname = "png/"
+os.makedirs(dirname, exist_ok=True)
 
 
 for ii in range(m):
@@ -258,6 +262,7 @@ ax4.scatter(index, peaks, label='peaks', color='red')
 ax4.legend()
 ax4.set_xlim(0,32)
 
-plt.savefig(f"{phase2}_{theta_fr}.png", dpi=300)
+filename = dirname + f"{phase2}_{theta_fr}.png"
+plt.savefig(filename, dpi=300)
 
 plt.show()
